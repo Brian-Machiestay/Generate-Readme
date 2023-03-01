@@ -4,9 +4,17 @@ const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
 
 // array of questions for user
-const questions = ['What is the title of your Readme?',
-"Let's describe your readme. Provide"];
-
+const questions = [
+    {
+        name: 'title', 
+        message: 'What is the title of your Readme?', 
+        type: 'input'}, 
+    {
+        name: 'description',
+        message: "let's describe your title, provide something meaningful",
+        type: 'input'
+    }
+]
 // function to write README file
 function writeToFile(fileName, data) {
     fs.appendFile(fileName, data, function(err) {
@@ -15,9 +23,13 @@ function writeToFile(fileName, data) {
 }
 
 // function to initialize program
-function init() {
-
+async function init() {
+    for (let i = 0; i < questions.length; i++) {
+        await inquirer.prompt(questions[i])
+        .then((answer) => console.log(answer))
+        .catch((err) => console.log(err))
+    }
 }
 
 // function call to initialize program
-init();
+init().catch((err) => console.log(err.message));
