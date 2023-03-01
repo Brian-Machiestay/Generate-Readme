@@ -4,8 +4,8 @@ const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
 
 // array of questions for user
-const questions = [
-
+const questions = ['What is the title of your Readme?',
+"Let's describe your readme. Provide"
 ];
 
 // function to write README file
