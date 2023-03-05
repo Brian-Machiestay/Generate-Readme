@@ -26,7 +26,9 @@ function writeToFile(fileName, data) {
 async function init() {
     for (let i = 0; i < questions.length; i++) {
         await inquirer.prompt(questions[i])
-        .then((answer) => console.log(answer))
+        .then((answer) => {
+            generateMarkdown(answer);
+        })
         .catch((err) => console.log(err))
     }
 }
