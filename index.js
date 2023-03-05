@@ -7,11 +7,11 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const questions = [
     {
         name: 'title', 
-        message: 'What is the title of your Readme?', 
+        message: 'What is the title of your Readme? >> ', 
         type: 'input'}, 
     {
-        name: 'description',
-        message: "let's describe your title, provide something meaningful",
+        name: 'descrip',
+        message: "let's describe your title, provide something meaningful >> ",
         type: 'input'
     }
 ]
@@ -24,10 +24,12 @@ function writeToFile(fileName, data) {
 
 // function to initialize program
 async function init() {
+    let mark;
     for (let i = 0; i < questions.length; i++) {
         await inquirer.prompt(questions[i])
         .then((answer) => {
-            generateMarkdown(answer);
+            mark = generateMarkdown(answer);
+            console.log(mark);
         })
         .catch((err) => console.log(err))
     }
