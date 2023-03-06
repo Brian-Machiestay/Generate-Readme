@@ -3,7 +3,7 @@
   return `# ${data.title}`;
 }
 
- function generateTable() {
+ function generateTable(data = null) {
   return `## Table of Content
   - [Description](#description)
   - [Installation](#installation)
