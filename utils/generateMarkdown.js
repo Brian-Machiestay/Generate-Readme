@@ -1,22 +1,24 @@
 // function to generate markdown for README
  function generateTitle(data) {
-  return `# ${data.title}`;
+  return `# ${data.title}  
+  \n`;
 }
 
  function generateTable(data = null) {
-  return `## Table of Content
-  - [Description](#description)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
-  - [Contributing](#contributing)
-  - [Tests]
-  - [Questions]`
+  return `## Table of Content  \n
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests]
+- [Questions]  
+  \n`
 }
 
  function describe(data) {
   return `## Description
-  ${data.title}`
+${data.title}  `
 }
 
  function install(data) {

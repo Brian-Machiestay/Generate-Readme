@@ -1,2 +1,2 @@
-# Generate-Readme
-Dynamically generate a professional readme in node
+# Readme Generator## Description
+Dynamically generate a professional readme

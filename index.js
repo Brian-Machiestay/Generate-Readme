@@ -12,7 +12,7 @@ const questions = [
         tit: generateMarkdown.generateTitle
     }, 
     {
-        name: 'descrip',
+        name: 'title',
         message: "let's describe your title, provide something meaningful >> ",
         type: 'input',
         tit: generateMarkdown.describe
@@ -32,8 +32,8 @@ async function init() {
         await inquirer.prompt(questions[i])
         .then((answer) => {
             console.log(answer);
-            questions[i]['tit'](answer);
-            console.log(mark);
+            mark = questions[i]['tit'](answer);
+            writeToFile('RE.md', mark);
         })
         .catch((err) => console.log(err))
     }
