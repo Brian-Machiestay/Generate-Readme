@@ -32,7 +32,7 @@ async function init() {
             await inquirer.prompt(questions[i])
             .then((answer) => {
                 console.log(answer);
-                mark = generateMarkdown(answer);
+                mark = generateMarkdown.generateTitle(answer);
                 console.log(mark);
             })
             .catch((err) => console.log(err))

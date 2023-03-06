@@ -49,4 +49,4 @@
   ${data.title}`
 }
 
-module.exports = { generateTable, describe, install, usage, license, contribute, test, questions }
+module.exports = { generateTitle ,generateTable, describe, install, usage, license, contribute, test, questions }
