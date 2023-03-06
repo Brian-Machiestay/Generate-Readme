@@ -42,6 +42,7 @@ async function init() {
             .then((ans) => {
                 mark = generateMarkdown({descrip: questions[i]['tit']});
                 console.log(mark);
+                console.log(generateMarkdown.generateTable());
                 console.log(ans.descrip);
             })
             

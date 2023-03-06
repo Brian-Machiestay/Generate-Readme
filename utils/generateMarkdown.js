@@ -1,9 +1,9 @@
 // function to generate markdown for README
-export function generateTitle(data) {
+ function generateTitle(data) {
   return `# ${data.title}`;
 }
 
-export function generateTable() {
+ function generateTable() {
   return `## Table of Content
   - [Description](#description)
   - [Installation](#installation)
@@ -14,37 +14,39 @@ export function generateTable() {
   - [Questions]`
 }
 
-export function describe(data) {
+ function describe(data) {
   return `## Description
   ${data.title}`
 }
 
-export function install(data) {
+ function install(data) {
   return `## Installation
   ${data.title}`
 }
 
-export function usage(data) {
+ function usage(data) {
   return `## Usage
   ${data.title}`
 }
 
-export function license(data) {
+ function license(data) {
   return `## License
   ${data.title}`
 }
 
-export function contribute(data) {
+ function contribute(data) {
   return `## Contributing
   ${data.title}`
 }
 
-export function test(data) {
+ function test(data) {
   return `## Tests
   ${data.title}`
 }
 
-export function questions(data) {
+ function questions(data) {
   return `## Questions
   ${data.title}`
 }
+
+module.exports = { generateTable, describe, install, usage, license, contribute, test, questions }
