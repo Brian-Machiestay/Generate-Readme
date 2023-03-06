@@ -11,19 +11,23 @@
 - [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
-- [Tests]
-- [Questions]  
+- [Tests](#tests)
+- [Questions](#questions)  
   \n`
 }
 
  function describe(data) {
   return `## Description
-${data.title}  `
+${data.title}  
+\n`
 }
 
- function install(data) {
-  return `## Installation
-  ${data.title}`
+ function install(steps) {
+  let text =  '## Installation  \n'
+  for (let step of steps) {
+    text = text + ` - ${step}  \n`;
+  }
+  return text;
 }
 
  function usage(data) {
