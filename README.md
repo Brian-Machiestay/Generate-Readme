@@ -21,6 +21,7 @@ This is a simple commandline application that is created to dynamically generate
 ## Usage  
 
   This program is open source and can used or adapted any way  
+  `node index.js`
 ## License  
 
 This software uses The MIT License  
