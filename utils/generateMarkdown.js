@@ -32,12 +32,12 @@ ${data.title}
 
  function usage(data) {
   return `## Usage  \n
-  ${data.title}  \n`
+  ${data.usage}  \n`
 }
 
  function license(data) {
-  return `## License
-  ${data.title}`
+  return `## License  \n
+  ${data.license}  \n`
 }
 
  function contribute(data) {

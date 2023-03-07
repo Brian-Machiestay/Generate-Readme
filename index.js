@@ -32,6 +32,19 @@ const questions = [
         name: 'usage',
         message: 'Enter usage information',
         tit: generateMarkdown.usage,
+    },
+    {
+        name: 'license',
+        message: 'choose a license',
+        type: 'list',
+        choices: ['Boost Software License 1.0', 'Eclipse Public License 1.0', 
+        'The MIT License', 'Mozilla Public License 2.0', 'IBM Public License Version 1.0'],
+        tit: generateMarkdown.license,
+        choiceLinks: ['[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)',
+        '[![License](https://img.shields.io/badge/License-EPL_1.0-red.svg)](https://opensource.org/licenses/EPL-1.0)',
+        '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
+        '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)',
+        '[![License: IPL 1.0](https://img.shields.io/badge/License-IPL_1.0-blue.svg)](https://opensource.org/licenses/IPL-1.0)']
     }
 ]
 // function to write README file
@@ -55,15 +68,16 @@ async function init() {
                 if (answer.step !== 'done') ob.push(answer.step);
             }
             mark = generateMarkdown.install(ob);
+            console.log(mark);
             all_mark.push(mark);
 
         }
         else {
             await inquirer.prompt(questions[i])
             .then((answer) => {
-                console.log(answer);
                 mark = questions[i]['tit'](answer);
                 all_mark.push(mark);
+                console.log(mark);
             })
             .catch((err) => console.log(err))
         }
