@@ -25,7 +25,7 @@ ${data.title}
  function install(steps) {
   let text =  '## Installation  \n'
   for (let step of steps) {
-    text = text + ` - ${step}  \n`;
+    text = text + ' - ' + step + '  \n';
   }
   return text;
 }
@@ -41,9 +41,9 @@ This software uses ${data.license}  \n`
 }
 
  function contribute(steps) {
-  let text =  `## Contributing  \n`;
+  let text =  '## Contributing  \n';
   for (let step of steps) {
-    text = text + ` - ${step}  \n`;
+    text = text + ' - ' + step + '  \n';
   }
   return text;
 }

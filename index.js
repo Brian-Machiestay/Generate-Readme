@@ -27,7 +27,7 @@ const questions = [
     },
     {
         name: 'install',
-        message: "Add a step by step installation, type 'done' in the next promt if you're done",
+        message: "Add a step by step installation, type 'done' in the next promt if you're done. \n Wrap code snippet in ``",
         tit: generateMarkdown.install,
     },
     {
@@ -58,6 +58,11 @@ const questions = [
         name: 'test',
         message: 'provide tests instructions. Wrap code snippets in ``',
         tit: generateMarkdown.test,
+    },
+    {
+        name: 'questions',
+        message: 'How would developers reach you if they have questions?',
+        tit: generateMarkdown.questions,
     }
 ]
 // function to write README file
@@ -75,7 +80,7 @@ async function init() {
         let contri = [];
         if (questions[i]['name'] === 'contribute') {
             console.log(questions[i]['message'])
-            console.log("type 'done' in the next promt when done");
+            console.log("type 'done' in the next promt when done.\n Wrap code snippets in ``");
             let answer = {'step': ''};
             while (answer.step !== 'done') {
                 answer = await inquirer.prompt({name: 'step', type: 'input', message: 'next step >>>'});
@@ -85,6 +90,19 @@ async function init() {
             console.log(mark);
             all_mark.push(mark);
 
+        }
+        else if (questions[i]['name'] === 'questions') {
+            console.log(questions[i]['message'])
+            console.log("type 'done' in the next promt when done.\n Wrap code snippets in ``");
+            ans = [];
+            ques = ['Enter your email address', 'enter your github username']
+            for (let i = 0; i < ques.length; i++) {
+                answer = await inquirer.prompt({name: 'details', type: 'input', message: `${ques[i]} >>>`});
+                ans.push(answer.details);
+            }
+            mark = questions[i]['tit'](ans);
+            console.log(mark);
+            all_mark.push(mark);
         }
         else if (questions[i]['name'] === 'test') {
             const testinc = [];
