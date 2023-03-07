@@ -27,6 +27,11 @@ const questions = [
         name: 'install',
         message: "Add a step by step installation, type 'done' in the next promt if you're done",
         tit: generateMarkdown.install,
+    },
+    {
+        name: 'usage',
+        message: 'Enter usage information',
+        tit: generateMarkdown.usage,
     }
 ]
 // function to write README file
@@ -39,6 +44,7 @@ function writeToFile(fileName, data) {
 // function to initialize program
 async function init() {
     let mark;
+    const all_mark = []
     for (let i = 0; i < questions.length; i++) {
         let ob = [];
         if (questions[i]['name'] === 'install') {
@@ -49,7 +55,7 @@ async function init() {
                 if (answer.step !== 'done') ob.push(answer.step);
             }
             mark = generateMarkdown.install(ob);
-            writeToFile('RE.md', mark);
+            all_mark.push(mark);
 
         }
         else {
@@ -57,7 +63,7 @@ async function init() {
             .then((answer) => {
                 console.log(answer);
                 mark = questions[i]['tit'](answer);
-                writeToFile('RE.md', mark);
+                all_mark.push(mark);
             })
             .catch((err) => console.log(err))
         }

@@ -31,8 +31,8 @@ ${data.title}
 }
 
  function usage(data) {
-  return `## Usage
-  ${data.title}`
+  return `## Usage  \n
+  ${data.title}  \n`
 }
 
  function license(data) {
