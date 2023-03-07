@@ -17,6 +17,7 @@ This is a simple commandline application that is created to dynamically generate
 ## Installation  
  - `git clone https://github.com/Brian-Machiestay/Generate-Readme`  
  - `cd https://github.com/Brian-Machiestay/Generate-Readme`  
+ - `npm install`  
 ## Usage  
 
   This program is open source and can used or adapted any way  
