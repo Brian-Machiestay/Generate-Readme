@@ -40,9 +40,12 @@ ${data.title}
 This software uses ${data.license}  \n`
 }
 
- function contribute(data) {
-  return `## Contributing
-  ${data.title}`
+ function contribute(steps) {
+  let text =  `## Contributing  \n`;
+  for (let step of steps) {
+    text = text + ` - ${step}  \n`;
+  }
+  return text;
 }
 
  function test(data) {

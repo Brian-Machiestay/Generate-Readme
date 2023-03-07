@@ -46,6 +46,17 @@ const questions = [
         '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
         '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)',
         '[![License: IPL 1.0](https://img.shields.io/badge/License-IPL_1.0-blue.svg)](https://opensource.org/licenses/IPL-1.0)']
+    },
+    {
+        name: 'contribute',
+        message: 'How can other developers contribute to your software? provide guidelines',
+        type: 'input',
+        tit: generateMarkdown.contribute,
+    },
+    {
+        name: 'tests',
+        message: 'provide tests instructions',
+        tit: generateMarkdown.test,
     }
 ]
 // function to write README file
@@ -60,8 +71,23 @@ async function init() {
     let mark;
     const all_mark = []
     for (let i = 0; i < questions.length; i++) {
-        let ob = [];
-        if (questions[i]['name'] === 'install') {
+        let contri = [];
+        if (questions[i]['name'] === 'contribute') {
+            console.log(questions[i]['message'])
+            console.log("type 'done' in the next promt when done");
+            let answer = {'step': ''};
+            while (answer.step !== 'done') {
+                answer = await inquirer.prompt({name: 'step', type: 'input', message: 'next step >>>'});
+                if (answer.step !== 'done') contri.push(answer.step);
+            }
+            mark = questions[i]['tit'](contri);
+            console.log(mark);
+            all_mark.push(mark);
+
+        }
+        
+        else if (questions[i]['name'] === 'install') {
+            let ob = [];
             console.log(questions[i]['message'])
             let answer = {'step': ''};
             while (answer.step !== 'done') {
