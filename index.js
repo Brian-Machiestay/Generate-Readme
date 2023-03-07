@@ -87,7 +87,6 @@ async function init() {
                 if (answer.step !== 'done') contri.push(answer.step);
             }
             mark = questions[i]['tit'](contri);
-            console.log(mark);
             all_mark.push(mark);
 
         }
@@ -101,7 +100,6 @@ async function init() {
                 ans.push(answer.details);
             }
             mark = questions[i]['tit'](ans);
-            console.log(mark);
             all_mark.push(mark);
         }
         else if (questions[i]['name'] === 'test') {
@@ -114,7 +112,6 @@ async function init() {
                 if (answer.step !== 'done') testinc.push(answer.step);
             }
             mark = questions[i]['tit'](testinc);
-            console.log(mark);
             all_mark.push(mark);
         }
         
@@ -128,7 +125,6 @@ async function init() {
                 if (answer.step !== 'done') ob.push(answer.step);
             }
             mark = generateMarkdown.install(ob);
-            console.log(mark);
             all_mark.push(mark);
 
         }
@@ -137,7 +133,6 @@ async function init() {
             .then((answer) => {
                 mark = questions[i]['tit'](answer);
                 all_mark.push(mark);
-                console.log(mark);
                 const id = questions[i].choices.indexOf(answer.license);
                 all_mark[0] = all_mark[0] + questions[i].choiceLinks[id] + '  \n';
             })
@@ -148,15 +143,13 @@ async function init() {
             .then((answer) => {
                 mark = questions[i]['tit'](answer);
                 all_mark.push(mark);
-                console.log(mark);
-                console.log(answer)
             })
             .catch((err) => console.log(err))
         }
     }
     console.log(all_mark);
     for (let i = 0; i < all_mark.length; i++) {
-        await writeToFile('RE.md', all_mark[i]);
+        await writeToFile('README.md', all_mark[i]);
     }
 }
 
