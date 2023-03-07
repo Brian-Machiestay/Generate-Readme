@@ -37,7 +37,7 @@ ${data.title}
 
  function license(data) {
   return `## License  \n
-  ${data.license}  \n`
+${data.license}  \n`
 }
 
  function contribute(data) {

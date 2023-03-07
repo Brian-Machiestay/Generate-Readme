@@ -78,6 +78,7 @@ async function init() {
                 mark = questions[i]['tit'](answer);
                 all_mark.push(mark);
                 console.log(mark);
+                console.log(answer)
             })
             .catch((err) => console.log(err))
         }
