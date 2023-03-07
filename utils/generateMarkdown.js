@@ -37,7 +37,7 @@ ${data.title}
 
  function license(data) {
   return `## License  \n
-${data.license}  \n`
+This software uses ${data.license}  \n`
 }
 
  function contribute(data) {

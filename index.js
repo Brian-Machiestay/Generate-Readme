@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require('path');
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
+const { resolve } = require("path");
 
 // array of questions for user
 const questions = [
@@ -48,8 +49,8 @@ const questions = [
     }
 ]
 // function to write README file
-function writeToFile(fileName, data) {
-    fs.appendFile(fileName, data, function(err) {
+async function writeToFile(fileName, data) {
+    await fs.promises.appendFile(fileName, data, function(err) {
         if (err) throw err;
     })
 }
@@ -72,6 +73,17 @@ async function init() {
             all_mark.push(mark);
 
         }
+        else if (questions[i]['name'] === 'license') {
+            await inquirer.prompt(questions[i])
+            .then((answer) => {
+                mark = questions[i]['tit'](answer);
+                all_mark.push(mark);
+                console.log(mark);
+                const id = questions[i].choices.indexOf(answer.license);
+                all_mark[0] = all_mark[0] + questions[i].choiceLinks[id] + '  \n';
+            })
+            .catch((err) => console.log(err))
+        }
         else {
             await inquirer.prompt(questions[i])
             .then((answer) => {
@@ -82,6 +94,10 @@ async function init() {
             })
             .catch((err) => console.log(err))
         }
+    }
+    console.log(all_mark);
+    for (let i = 0; i < all_mark.length; i++) {
+        await writeToFile('RE.md', all_mark[i]);
     }
 }
 
