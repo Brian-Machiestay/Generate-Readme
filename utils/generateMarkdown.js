@@ -57,8 +57,11 @@ This software uses ${data.license}  \n`
 }
 
  function questions(data) {
-  return `## Questions
-  ${data.title}`
+  let text = '## Questions  \n';
+  text = text + 'Have any questions?  \n'; 
+  text = text + `Email: ${data[0]}  \n`;
+  text = text + `[Github](https://github.com/${data[1]}/)  \n`;
+  return text;
 }
 
 module.exports = { generateTitle ,generateTable, describe, install, usage, license, contribute, test, questions }
