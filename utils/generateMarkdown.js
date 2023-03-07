@@ -48,9 +48,12 @@ This software uses ${data.license}  \n`
   return text;
 }
 
- function test(data) {
-  return `## Tests
-  ${data.title}`
+ function test(test) {
+  let text = '## Tests  \n'
+  for (let step of test) {
+    text = text + ' - ' + step + '  \n';
+  }
+  return text;
 }
 
  function questions(data) {

@@ -3,6 +3,7 @@ const path = require('path');
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
 const { resolve } = require("path");
+const { text } = require("express");
 
 // array of questions for user
 const questions = [
@@ -54,8 +55,8 @@ const questions = [
         tit: generateMarkdown.contribute,
     },
     {
-        name: 'tests',
-        message: 'provide tests instructions',
+        name: 'test',
+        message: 'provide tests instructions. Wrap code snippets in ``',
         tit: generateMarkdown.test,
     }
 ]
@@ -85,6 +86,20 @@ async function init() {
             all_mark.push(mark);
 
         }
+        else if (questions[i]['name'] === 'test') {
+            const testinc = [];
+            console.log(questions[i]['message'])
+            console.log("type 'done' in the next promt when done");
+            let answer = {'step': ''};
+            while (answer.step !== 'done') {
+                answer = await inquirer.prompt({name: 'step', type: 'input', message: 'next step >>>'});
+                if (answer.step !== 'done') testinc.push(answer.step);
+            }
+            mark = questions[i]['tit'](testinc);
+            console.log(mark);
+            all_mark.push(mark);
+        }
+        
         
         else if (questions[i]['name'] === 'install') {
             let ob = [];
